@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PrizePool">
+<typeAlias alias="prizePool" type="org.greyhawk.sms.vo.PrizePool"/>
+<typeAlias alias="prizePoolParameter" type="org.greyhawk.sms.vo.PrizePoolParameter"/>
+<resultMap class="prizePool" id="prizePoolResult">
+	<result property="id" column="ID"/>
+	<result property="accNum" column="ACC_NUM"/>
+	<result property="prizeType" column="PRIZE_TYPE"/>
+	<result property="prizeTime" column="PRIZE_TIME"/>
+	<result property="isDraw" column="IS_DRAW"/>
+</resultMap>
+<select id="queryIsDraw" resultMap="prizePoolResult" parameterClass="prizePoolParameter">
+	<![CDATA[
+		select * from TB_PRIZE_POOL where ACC_NUM = #accNum# and IS_DRAW = #isDraw#
+	]]>
+</select>
+</sqlMap>

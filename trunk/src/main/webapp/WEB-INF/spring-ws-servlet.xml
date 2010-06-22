@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+       
+     <!-- schema definition -->  
+     <bean id="ctcc_common_types_2_1" class="org.springframework.xml.xsd.SimpleXsdSchema">
+		<property name="xsd" value="/WEB-INF/ctcc_common_types_2_1.xsd"/>
+	</bean>
+
+	<bean id="ctcc_sms_types_2_1" class="org.springframework.xml.xsd.SimpleXsdSchema">
+		<property name="xsd" value="/WEB-INF/ctcc_sms_types_2_1.xsd"></property>
+	</bean>
+	
+	<!-- wsdl definition -->
+	<bean id="ctcc_common_faults_2_0" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+		<constructor-arg value="/WEB-INF/ctcc_common_faults_2_0.wsdl"/>
+	</bean>
+	
+	<bean id="ctcc_sms_notification_interface_2_1" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+		<constructor-arg value="/WEB-INF/ctcc_sms_notification_interface_2_1.wsdl"/>
+	</bean>
+	
+	<bean id="ctcc_sms_notification_service_2_1" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+		<constructor-arg value="/WEB-INF/ctcc_sms_notification_service_2_1.wsdl"/>
+	</bean>
+	
+	<bean id="ctcc_sms_send_interface_2_1" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+		<constructor-arg value="/WEB-INF/ctcc_sms_send_interface_2_1.wsdl"/>
+	</bean>
+	
+	<bean id="ctcc_sms_send_service_2_1" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+		<constructor-arg value="/WEB-INF/ctcc_sms_send_service_2_1.wsdl"/>
+	</bean>
+	
+	<!-- EndPoint Mapping  -->
+	<bean class="org.springframework.ws.server.endpoint.mapping.PayloadRootQNameEndpointMapping">
+		<property name="mappings">
+			<props>
+				<prop key="{http://www.chinatelecom.com.cn/schema/ctcc/sms/notification/v2_1/local}notifySmsReception">messageNotifySmsReceptionEndPoint</prop>
+				<prop key="{http://www.chinatelecom.com.cn/schema/ctcc/sms/notification/v2_1/local}notifySmsDeliveryReceipt">marshallingNotifySmsDeliveryReceptionEndPoint</prop>
+				<prop key="{http://www.chinatelecom.com.cn/schema/ctcc/sms/send/v2_1/local}sendSms">sendSmsEndPoint</prop>
+			</props>
+		</property>
+		<property name="interceptors">
+            <bean class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor"/>
+        </property>
+	</bean>
+	
+</beans>

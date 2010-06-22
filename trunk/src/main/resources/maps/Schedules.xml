@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Schedules">
+	<typeAlias alias="schedules" type="org.greyhawk.sms.vo.Schedules"/>
+	<resultMap class="schedules" id="schedulesResult">
+		<result property="id" column="ID"/>
+		<result property="hostTeam" column="HOST_TEAM"/>
+		<result property="visitingTeam" column="VISITING_TEAM"/>
+		<result property="playTime" column="PLAY_TIME"/>
+	</resultMap>
+	<select id="selectSchedulesByPlayTime" resultMap="schedulesResult" parameterClass="Date">
+		<![CDATA[
+			select * from TB_SCHEDULES where PLAY_TIME=#VALUE:DATE#
+		]]>
+	</select>
+</sqlMap>
