@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ReceivedMessage">
+	<typeAlias alias="receivedMessage" type="org.greyhawk.sms.vo.ReceivedMessage"/>
+	<insert id="saveReceivedMessage" parameterClass="receivedMessage">
+		<selectKey keyProperty="id" resultClass="long">
+			<![CDATA[
+				select seq_receivedMessage.nextval as id from dual
+			]]> 
+		</selectKey>
+		<![CDATA[
+			insert into tb_received_message(id,link_id,san,message,sender_address,sms_serv_act_num,received_time)
+			values(#id#,#linkId#,#san#,#message#,#senderAddress#,#smsServiceActivationNumber#,#receivedTime#)
+		]]>	
+	</insert>
+</sqlMap>
