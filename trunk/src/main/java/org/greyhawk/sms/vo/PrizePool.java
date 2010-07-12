@@ -4,9 +4,11 @@ import java.util.Date;
 
 public class PrizePool {
 	
-	private final String PRIZE_CARD_MESSAGE = "恭喜您,您获得了本活动提供的50元电话充值卡,活动结束后,将自动充到你的电话机上. 欢迎你继续编辑短信SJB到106594508参与本活动.";
+	private final String PRIZE_CARD_MESSAGE = "恭喜你,获得本次活动提供的50元电话充值卡,将在8月初直接充到你的手机卡上";
 	
-	private final String PRIZE_CASH_MESSAGE = "恭喜您,您获得了本活动的幸运大奖现金500元;请你拨打电话160联系领奖事宜.";
+	private final String PRIZE_CASH_MESSAGE = "恭喜你,获得本次活动提供的500元现金奖励";
+	
+	private final String PRIZE_MAX_CASH_MESSAGE = "恭喜你,获得本次活动提供的1000元现金奖励";
 	
 	private Long id;
 	
@@ -63,6 +65,8 @@ public class PrizePool {
 			return this.PRIZE_CARD_MESSAGE;
 		if(getPrizeType() == 2)
 			return this.PRIZE_CASH_MESSAGE;
+		if(getPrizeType() == 3)
+			return this.PRIZE_MAX_CASH_MESSAGE;
 		return null;
 	}
 	

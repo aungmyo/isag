@@ -5,7 +5,7 @@ import org.greyhawk.sms.vo.SendingMessage;
 
 public class SJBWorldCupCommand implements WorldCupCommand {
 	
-	private final String MESSAGE = "欢迎参与世界杯有奖竞猜,发SD到106594508冠军球队竞猜,发SP到106594508最佳球员竞猜";
+	private final String MESSAGE = "2010南非世界杯有奖竞猜活动已经结束,谢谢你的参与,中奖查询发ZJ到106594508";
 	@Override
 	public SendingMessage execute(ReceivedMessage receivedMessage) {
 		String address = receivedMessage.getSenderAddress();

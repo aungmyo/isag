@@ -24,7 +24,7 @@ public class SCWorldCupCommand implements WorldCupCommand {
 		String linkId = receivedMessage.getLinkId();
 		String message = "";
 		if(schedules != null)
-			message = schedules.toString();
+			message = schedules.getHostTeam();
 		else
 			message = "尊敬的客户，今天没有世界杯相关赛程，谢谢你的参与!";
 		SendingMessage sendingMessage = new SendingMessage(PROD_ID,linkId, address, senderName, message);
