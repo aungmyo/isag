@@ -29,5 +29,13 @@ public class SchedulesDaoTest extends TMSpringContextTests{
 		Schedules schedules = schedulesDao.findSchedultsByPlayTime(calendar.getTime());
 		Assert.assertNull(schedules);
 	}
+	
+	@Test
+	public void test_find_schedules_host_name_message(){
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2010, Calendar.JULY, 1);
+		Schedules schedules = schedulesDao.findSchedultsByPlayTime(calendar.getTime());
+		System.out.println(schedules.getHostTeam());
+	}
 
 }
